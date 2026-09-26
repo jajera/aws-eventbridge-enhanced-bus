@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="960" height="240" role="img"
+     aria-labelledby="title desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="title">Push consume path across lab and dev</title>
+  <desc id="desc">PutEvents in lab hits the enhanced bus, RAM makes it visible, the FIFO Subscriber in dev assumes a delivery role and invokes the target Lambda, with failures to a DLQ.</desc>
+  <defs>
+    <marker id="cp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+    <marker id="cp-fail" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b42318"/>
+    </marker>
+  </defs>
+  <style>
+    .p { fill: #f6f7f9; stroke: #d0d5dd; stroke-width: 1.5; }
+    .s { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.5; }
+    .bus { fill: #ffffff; stroke: #e7157b; stroke-width: 2; }
+    .t { font-size: 14px; font-weight: 700; fill: #101828; }
+    .l { font-size: 12px; font-weight: 600; fill: #344054; }
+    .m { font-size: 11px; font-weight: 500; fill: #667085; }
+    .ok { font-size: 11px; font-weight: 700; fill: #087443; }
+    .a { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#cp-arrow); }
+    .f { stroke: #b42318; stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; marker-end: url(#cp-fail); }
+  </style>
+
+  <rect class="p" x="8" y="8" width="944" height="224" rx="14"/>
+  <text class="t" x="28" y="34">Push path -- lab publishes, bus delivers, dev Subscriber invokes</text>
+
+  <rect class="s" x="28" y="56" width="130" height="84" rx="10"/>
+  <text class="l" x="93" y="90" text-anchor="middle">PutEvents</text>
+  <text class="m" x="93" y="108" text-anchor="middle">lab</text>
+  <text class="m" x="93" y="124" text-anchor="middle">+ EventGroupId</text>
+
+  <path class="a" d="M 158 98 H 188"/>
+
+  <rect class="bus" x="188" y="56" width="150" height="84" rx="10"/>
+  <text class="l" x="263" y="90" text-anchor="middle">Enhanced bus</text>
+  <text class="m" x="263" y="108" text-anchor="middle">lab-owned</text>
+  <text class="m" x="263" y="124" text-anchor="middle">RAM-visible</text>
+
+  <path class="a" d="M 338 98 H 368"/>
+
+  <rect class="s" x="368" y="56" width="150" height="84" rx="10"/>
+  <text class="l" x="443" y="90" text-anchor="middle">Subscriber</text>
+  <text class="m" x="443" y="108" text-anchor="middle">FIFO in dev</text>
+  <text class="m" x="443" y="124" text-anchor="middle">filter + retry</text>
+
+  <path class="a" d="M 518 98 H 548"/>
+
+  <rect class="s" x="548" y="56" width="150" height="84" rx="10"/>
+  <text class="l" x="623" y="90" text-anchor="middle">Target Lambda</text>
+  <text class="m" x="623" y="108" text-anchor="middle">via delivery role</text>
+  <text class="m" x="623" y="124" text-anchor="middle">health-eval</text>
+
+  <path class="a" d="M 698 98 H 728"/>
+
+  <rect class="s" x="728" y="56" width="150" height="84" rx="10"/>
+  <text class="l" x="803" y="90" text-anchor="middle">Proof store</text>
+  <text class="m" x="803" y="108" text-anchor="middle">DynamoDB</text>
+  <text class="m" x="803" y="124" text-anchor="middle">health-alerts</text>
+
+  <path class="f" d="M 443 140 V 176 H 623"/>
+  <rect class="s" x="560" y="176" width="126" height="36" rx="8"/>
+  <text class="l" x="623" y="198" text-anchor="middle">DLQ on failure</text>
+
+  <text class="ok" x="28" y="214">Dev does not poll -- EventBridge pushes through the Subscriber</text>
+</svg>

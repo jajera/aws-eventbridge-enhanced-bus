@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <!-- Google tag (gtag.js) — shared johna.kiwi stream -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GP64SX615"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6GP64SX615');
+  </script>
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/patina.css' | url }}">
+  <!-- Local tweaks must load AFTER patina.css so .run overrides win. -->
+  <link rel="stylesheet" href="{{ 'stylesheets/site.css' | url }}">
+  <link rel="apple-touch-icon" href="{{ 'assets/apple-touch-icon.png' | url }}">
+  {% set ns = namespace(
+    title=config.site_name,
+    description=config.site_description or config.site_name,
+    image=(config.site_url or '') ~ 'assets/og-image.png',
+    url=config.site_url
+  ) %}
+  {% if page %}
+    {% if page.canonical_url %}
+      {% set ns.url = page.canonical_url %}
+    {% endif %}
+    {% if page.meta %}
+      {% if page.meta.title %}
+        {% set ns.title = page.meta.title %}
+      {% elif page.title and not page.is_homepage %}
+        {% set ns.title = page.title | striptags %}
+      {% endif %}
+      {% if page.meta.description %}
+        {% set ns.description = page.meta.description %}
+      {% endif %}
+      {% if page.meta.image %}
+        {% set ns.image = (config.site_url or '') ~ page.meta.image %}
+      {% endif %}
+    {% elif page.title and not page.is_homepage %}
+      {% set ns.title = page.title | striptags %}
+    {% endif %}
+  {% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ ns.title }}">
+  <meta property="og:description" content="{{ ns.description }}">
+  <meta property="og:url" content="{{ ns.url }}">
+  <meta property="og:image" content="{{ ns.image }}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ns.title }}">
+  <meta name="twitter:description" content="{{ ns.description }}">
+  <meta name="twitter:image" content="{{ ns.image }}">
+{% endblock %}

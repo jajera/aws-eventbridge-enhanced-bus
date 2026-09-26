@@ -1,0 +1,10 @@
+# Zensical (Patina) pages use HTML for layout cards and callouts.
+# md_in_html is enabled in zensical.toml.
+MD013: false
+MD033: false
+
+# Content-tab code (pymdownx `=== "tab"`) nests fenced blocks under a 4-space
+# indent, which MD046 misreads as indented-style and flags against the fenced
+# `.run` blocks used everywhere else. The site is fenced-first; disable the
+# check rather than mangle the tab syntax.
+MD046: false

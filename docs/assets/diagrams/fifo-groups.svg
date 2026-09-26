@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" width="960" height="280" role="img"
+     aria-labelledby="title desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="title">EventGroupId orders events per entity on a FIFO Subscriber</title>
+  <desc id="desc">Two entity lanes on the same bus. Within each EventGroupId, events arrive in order at the FIFO Subscriber. Lanes are independent.</desc>
+  <defs>
+    <marker id="fg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+  <style>
+    .p { fill: #f6f7f9; stroke: #d0d5dd; stroke-width: 1.5; }
+    .chip { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.25; }
+    .bus { fill: #ffffff; stroke: #e7157b; stroke-width: 2; }
+    .sub { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.5; }
+    .t { font-size: 14px; font-weight: 700; fill: #101828; }
+    .l { font-size: 12px; font-weight: 600; fill: #344054; }
+    .m { font-size: 11px; font-weight: 500; fill: #667085; }
+    .a { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#fg-arrow); }
+  </style>
+
+  <rect class="p" x="8" y="8" width="944" height="264" rx="14"/>
+  <text class="t" x="28" y="34">FIFO orders within EventGroupId -- lanes stay independent</text>
+
+  <text class="m" x="28" y="64">Entity A</text>
+  <rect class="chip" x="100" y="48" width="70" height="32" rx="6"/>
+  <text class="l" x="135" y="68" text-anchor="middle">e1</text>
+  <rect class="chip" x="184" y="48" width="70" height="32" rx="6"/>
+  <text class="l" x="219" y="68" text-anchor="middle">e2</text>
+  <rect class="chip" x="268" y="48" width="70" height="32" rx="6"/>
+  <text class="l" x="303" y="68" text-anchor="middle">e3</text>
+  <path class="a" d="M 348 64 H 400"/>
+
+  <text class="m" x="28" y="114">Entity B</text>
+  <rect class="chip" x="100" y="98" width="70" height="32" rx="6"/>
+  <text class="l" x="135" y="118" text-anchor="middle">e1</text>
+  <rect class="chip" x="184" y="98" width="70" height="32" rx="6"/>
+  <text class="l" x="219" y="118" text-anchor="middle">e2</text>
+  <path class="a" d="M 264 114 H 400"/>
+
+  <rect class="bus" x="400" y="56" width="200" height="92" rx="10"/>
+  <text class="l" x="500" y="92" text-anchor="middle">Enhanced bus</text>
+  <text class="m" x="500" y="112" text-anchor="middle">same bus, two groups</text>
+
+  <path class="a" d="M 600 102 H 660"/>
+
+  <rect class="sub" x="660" y="56" width="220" height="92" rx="10"/>
+  <text class="l" x="770" y="92" text-anchor="middle">FIFO Subscriber</text>
+  <text class="m" x="770" y="112" text-anchor="middle">A: e1 then e2 then e3</text>
+  <text class="m" x="770" y="128" text-anchor="middle">B: e1 then e2 (parallel OK)</text>
+
+  <text class="m" x="28" y="180">Publish sets SystemMetadata.EventGroupId = entity id.</text>
+  <text class="m" x="28" y="200">Without EventGroupId, FIFO cannot group -- order is not guaranteed across entities.</text>
+  <text class="m" x="28" y="230">An UNORDERED Subscriber on the same bus can still fan out without caring about lanes.</text>
+</svg>

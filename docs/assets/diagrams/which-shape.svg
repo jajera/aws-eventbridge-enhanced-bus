@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" role="img"
+     aria-labelledby="ws-title ws-desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="ws-title">Which bus shape to choose, by footprint</title>
+  <desc id="ws-desc">A yes or no decision path. Consumers in another account? If no, use a classic bus. If yes, more than one or two hops? If no, classic bus-to-bus is fine. If yes, ordering or self-serve consumers? If no, classic is fine; if yes, use the enhanced shared bus with RAM and Subscribers.</desc>
+
+  <defs>
+    <marker id="ws-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+
+  <style>
+    .q    { fill: #ffffff; stroke: #98a2b3; stroke-width: 1.75; }
+    .soft { fill: #ffffff; stroke: #e7157b; stroke-width: 1.75; }
+    .pick { fill: #ffffff; stroke: #22d3ee; stroke-width: 2.5; }
+    .t  { font-size: 13px; font-weight: 700; fill: #101828; }
+    .m  { font-size: 11.5px; font-weight: 500; fill: #667085; }
+    .yn { font-size: 11px; font-weight: 700; fill: #344054; }
+    .a  { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#ws-arrow); }
+    .cap{ font-size: 13px; font-weight: 700; fill: #087443; }
+  </style>
+
+  <!-- Q1 -->
+  <rect class="q" x="360" y="24" width="240" height="58" rx="10"/>
+  <text class="t" x="380" y="50">Consumers in</text>
+  <text class="t" x="380" y="68">another account?</text>
+
+  <!-- Q1 no -> classic -->
+  <path class="a" d="M 360 53 H 200 V 100"/>
+  <text class="yn" x="250" y="45">no</text>
+  <rect class="soft" x="80" y="100" width="240" height="58" rx="10"/>
+  <text class="t" x="100" y="126">Classic / default bus</text>
+  <text class="m" x="100" y="146">no ceremony</text>
+
+  <!-- Q1 yes -> Q2 -->
+  <path class="a" d="M 480 82 V 118"/>
+  <text class="yn" x="490" y="104">yes</text>
+  <rect class="q" x="360" y="118" width="240" height="58" rx="10"/>
+  <text class="t" x="380" y="144">More than</text>
+  <text class="t" x="380" y="162">one or two hops?</text>
+
+  <!-- Classic bus-to-bus box (target of both "no" branches) -->
+  <rect class="soft" x="680" y="150" width="240" height="58" rx="10"/>
+  <text class="t" x="700" y="176">Classic bus-to-bus</text>
+  <text class="m" x="700" y="196">still fine</text>
+
+  <!-- Q2 no -> box (enters left side) -->
+  <path class="a" d="M 600 147 H 640 V 172 H 680"/>
+  <text class="yn" x="648" y="140">no</text>
+
+  <!-- Q2 yes -> Q3 -->
+  <path class="a" d="M 480 176 V 212"/>
+  <text class="yn" x="490" y="198">yes</text>
+  <rect class="q" x="360" y="212" width="240" height="58" rx="10"/>
+  <text class="t" x="380" y="238">Ordering or</text>
+  <text class="t" x="380" y="256">self-serve consumers?</text>
+
+  <!-- Q3 no -> box (enters left side, lower) -->
+  <path class="a" d="M 600 241 H 640 V 186 H 680"/>
+  <text class="yn" x="648" y="234">no</text>
+
+  <!-- Q3 yes -> enhanced -->
+  <path class="a" d="M 480 270 V 312"/>
+  <text class="yn" x="490" y="292">yes</text>
+  <rect class="pick" x="330" y="312" width="300" height="70" rx="10"/>
+  <text class="t" x="352" y="342">Enhanced shared bus</text>
+  <text class="cap" x="352" y="364">+ AWS RAM + Subscribers</text>
+</svg>

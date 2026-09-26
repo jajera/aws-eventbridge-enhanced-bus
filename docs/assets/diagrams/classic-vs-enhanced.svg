@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img"
+     aria-labelledby="title desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="title">Classic multi-bus routing vs enhanced shared EventBridge bus</title>
+  <desc id="desc">Left: account buses linked with bus-to-bus hops. Right: one enhanced bus shared with AWS RAM; publishers and Subscribers attach to the same bus.</desc>
+
+  <defs>
+    <marker id="eb-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+
+  <style>
+    .eb-panel { fill: #f6f7f9; stroke: #d0d5dd; stroke-width: 1.5; }
+    .eb-bus { fill: #ffffff; stroke: #e7157b; stroke-width: 2; }
+    .eb-bus-muted { fill: #ffffff; stroke: #98a2b3; stroke-width: 1.75; }
+    .eb-acct { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.25; }
+    .eb-title { font-size: 15px; font-weight: 700; fill: #101828; }
+    .eb-label { font-size: 12px; font-weight: 600; fill: #344054; }
+    .eb-meta  { font-size: 11px; font-weight: 500; fill: #667085; }
+    .eb-call  { font-size: 12px; font-weight: 700; fill: #101828; }
+    .eb-good  { font-size: 12px; font-weight: 700; fill: #087443; }
+    .eb-arrow { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#eb-arrow); }
+  </style>
+
+  <!-- Left: classic -->
+  <rect class="eb-panel" x="16" y="16" width="448" height="388" rx="12"/>
+  <text class="eb-title" x="36" y="44">Classic multi-bus</text>
+  <text class="eb-meta" x="36" y="62">bus-to-bus / cross-account rules</text>
+
+  <rect class="eb-acct" x="56" y="88" width="150" height="64" rx="8"/>
+  <text class="eb-label" x="72" y="114">Account A</text>
+  <rect class="eb-bus-muted" x="72" y="124" width="118" height="18" rx="4"/>
+  <text class="eb-meta" x="92" y="137">custom bus</text>
+
+  <rect class="eb-acct" x="56" y="178" width="150" height="64" rx="8"/>
+  <text class="eb-label" x="72" y="204">Account B</text>
+  <rect class="eb-bus-muted" x="72" y="214" width="118" height="18" rx="4"/>
+  <text class="eb-meta" x="92" y="227">custom bus</text>
+
+  <rect class="eb-acct" x="56" y="268" width="150" height="64" rx="8"/>
+  <text class="eb-label" x="72" y="294">Account C</text>
+  <rect class="eb-bus-muted" x="72" y="304" width="118" height="18" rx="4"/>
+  <text class="eb-meta" x="92" y="317">custom bus</text>
+
+  <path class="eb-arrow" d="M 206 120 H 250"/>
+  <path class="eb-arrow" d="M 250 120 V 210 H 206"/>
+  <path class="eb-arrow" d="M 250 210 V 300 H 206"/>
+  <text class="eb-meta" x="268" y="168">bus-to-bus hops</text>
+  <text class="eb-meta" x="268" y="186">between bus ARNs</text>
+
+  <text class="eb-call" x="36" y="372">Many buses, hop charges</text>
+
+  <!-- Right: enhanced; centered column, no side callout -->
+  <rect class="eb-panel" x="496" y="16" width="448" height="388" rx="12"/>
+  <text class="eb-title" x="516" y="44">Enhanced custom bus</text>
+  <text class="eb-meta" x="516" y="62">one bus - AWS RAM - Subscribers</text>
+
+  <rect class="eb-acct" x="560" y="88" width="130" height="40" rx="8"/>
+  <text class="eb-label" x="586" y="113">Publisher</text>
+
+  <rect class="eb-acct" x="750" y="88" width="130" height="40" rx="8"/>
+  <text class="eb-label" x="776" y="113">Publisher</text>
+
+  <path class="eb-arrow" d="M 625 128 V 158"/>
+  <path class="eb-arrow" d="M 815 128 V 158"/>
+
+  <rect class="eb-bus" x="560" y="158" width="320" height="70" rx="10"/>
+  <text class="eb-label" x="640" y="188">Enhanced event bus</text>
+  <text class="eb-meta" x="658" y="208">shared via AWS RAM</text>
+
+  <path class="eb-arrow" d="M 625 228 V 258"/>
+  <path class="eb-arrow" d="M 815 228 V 258"/>
+
+  <rect class="eb-acct" x="560" y="258" width="130" height="40" rx="8"/>
+  <text class="eb-label" x="582" y="283">Subscriber</text>
+
+  <rect class="eb-acct" x="750" y="258" width="130" height="40" rx="8"/>
+  <text class="eb-label" x="772" y="283">Subscriber</text>
+
+  <text class="eb-good" x="516" y="340">One bus, self-serve Subscribers</text>
+  <text class="eb-meta" x="516" y="360">Optional FIFO via EventGroupId</text>
+</svg>

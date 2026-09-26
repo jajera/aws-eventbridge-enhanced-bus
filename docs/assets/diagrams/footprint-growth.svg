@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 250" width="960" height="250" role="img"
+     aria-labelledby="fg-title fg-desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="fg-title">How the footprint grows: one account, a few accounts, many consumers</title>
+  <desc id="fg-desc">A left-to-right timeline. One account uses a classic bus. A few accounts chain bus-to-bus with DIY ordering. Many consumers move to one enhanced bus shared with RAM and self-serve Subscribers.</desc>
+
+  <style>
+    .track { stroke: #d0d5dd; stroke-width: 3; }
+    .stageA { fill: #ffffff; stroke: #98a2b3; stroke-width: 1.75; }
+    .stageB { fill: #ffffff; stroke: #e7157b; stroke-width: 1.75; }
+    .stageC { fill: #ffffff; stroke: #22d3ee; stroke-width: 2.25; }
+    .dotA { fill: #98a2b3; }
+    .dotB { fill: #e7157b; }
+    .dotC { fill: #22d3ee; }
+    .t  { font-size: 14px; font-weight: 700; fill: #101828; }
+    .m  { font-size: 11.5px; font-weight: 500; fill: #667085; }
+    .cap{ font-size: 13px; font-weight: 700; fill: #087443; }
+  </style>
+
+  <text class="t" x="30" y="36">When the shared bus earns the ceremony</text>
+
+  <!-- timeline track -->
+  <line class="track" x1="120" y1="86" x2="840" y2="86"/>
+  <circle class="dotA" cx="160" cy="86" r="8"/>
+  <circle class="dotB" cx="480" cy="86" r="8"/>
+  <circle class="dotC" cx="800" cy="86" r="9"/>
+
+  <!-- Stage 1 -->
+  <rect class="stageA" x="40" y="112" width="256" height="104" rx="10"/>
+  <text class="t" x="60" y="140">One account</text>
+  <text class="m" x="60" y="164">Classic / default bus</text>
+  <text class="m" x="60" y="184">No RAM, no Subscriber</text>
+
+  <!-- Stage 2 -->
+  <rect class="stageB" x="352" y="112" width="256" height="104" rx="10"/>
+  <text class="t" x="372" y="140">A few accounts</text>
+  <text class="m" x="372" y="164">Bus-to-bus / cross-account rules</text>
+  <text class="m" x="372" y="184">Hops + DIY ordering start to hurt</text>
+
+  <!-- Stage 3 -->
+  <rect class="stageC" x="664" y="112" width="256" height="104" rx="10"/>
+  <text class="t" x="684" y="140">Many consumers</text>
+  <text class="m" x="684" y="164">One enhanced bus + AWS RAM</text>
+  <text class="cap" x="684" y="184">Self-serve Subscribers · FIFO</text>
+</svg>

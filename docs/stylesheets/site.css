@@ -1,0 +1,178 @@
+/* local site tweaks — patina theme supplies the rest */
+.diagram-caption {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-top: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Comparison diagrams: rendered as markdown images so glightbox wraps them
+   (click to zoom). Keep aspect ratio + light card behind transparent SVGs. */
+.diagram,
+.md-typeset figure {
+  margin: 1.25rem 0 0.25rem;
+}
+.md-typeset a.glightbox img,
+.md-typeset p > img[src$=".svg"],
+.diagram img {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 0.5rem;
+  background: #fff;
+  cursor: zoom-in;
+}
+
+/* Small AWS service icons: never zoom, no card background. They carry the
+   .icon-svg class so the build-time glightbox wrap (images without a class)
+   skips them. */
+.icon-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.25rem 0 0.5rem;
+}
+.icon-row figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  flex: 0 0 auto;
+  width: 5.5rem;
+  text-align: center;
+}
+.icon-row img,
+img.icon-svg {
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  background: none;
+  border-radius: 0;
+  cursor: default;
+}
+.icon-row figcaption {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  opacity: 0.85;
+}
+
+/* Lightbox: zoomed diagrams should fill the viewport, not shrink vs in-page. */
+.gslide-image img,
+.gslide-media img {
+  max-width: min(95vw, 1400px) !important;
+  max-height: 90vh !important;
+  width: auto !important;
+  height: auto !important;
+  background: #fff;
+  border-radius: 0.5rem;
+}
+.gslide-image img[src$=".svg"],
+.gslide-media img[src$=".svg"] {
+  min-width: min(92vw, 1100px);
+}
+
+/*
+ * Command + result: one outer frame only.
+ * Command band is darker; result is lighter under a hairline.
+ */
+.md-typeset .run {
+  margin: 1.15rem 0 1.45rem;
+  border: 1px solid var(--patina-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--patina-surface);
+}
+
+.md-typeset .run > .highlight {
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--md-code-bg-color) !important;
+}
+
+.md-typeset .run > .highlight + .highlight {
+  border-top: 1px solid var(--patina-border) !important;
+  background: var(--patina-surface) !important;
+}
+
+.md-typeset .run > .highlight > pre {
+  margin: 0 !important;
+  padding: 0.85rem 1rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* The result band carries {.no-copy}; patina rounds every .highlight/pre, which
+   left a concave inset inside the frame. Flatten it so it sits flush. */
+.md-typeset .run > .no-copy.highlight,
+.md-typeset .run > .highlight + .highlight {
+  border: 0 !important;
+  border-top: 1px solid var(--patina-border) !important;
+  border-radius: 0 !important;
+}
+
+.md-typeset .run > .highlight + .highlight .md-code__button,
+.md-typeset .run > .highlight + .highlight .md-clipboard {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* "Expect" badges: a visual echo of what a passing check should show, so the
+   reader can eyeball pass/fail without parsing the JSON above. Supplements the
+   prose assertions on the Verify page. */
+.md-typeset .expect {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.4rem 0 1.35rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--patina-border);
+  border-left: 3px solid var(--patina-cyan);
+  border-radius: 6px;
+  background: var(--patina-surface);
+  font-size: 0.85rem;
+}
+.md-typeset .expect::before {
+  content: "expect";
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--patina-muted);
+}
+.md-typeset .expect .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--patina-cyan);
+  color: var(--patina-cyan);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.md-typeset .expect .pill::before {
+  content: "✓";
+  font-weight: 700;
+}
+.md-typeset .expect .pill--warn {
+  border-color: var(--patina-amber);
+  color: var(--patina-amber);
+}
+.md-typeset .expect .pill--warn::before {
+  content: "0";
+}
+.md-typeset .expect .sep {
+  color: var(--patina-muted);
+}

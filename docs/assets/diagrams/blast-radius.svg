@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" role="img"
+     aria-labelledby="br-title br-desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="br-title">Blast radius: shared bus versus a critical slice kept local</title>
+  <desc id="br-desc">Top: a bad filter or deleted share on the shared enhanced bus reaches every Subscriber. Bottom: a fate-sensitive stream stays on a separate classic bus with an owner-only consumer.</desc>
+
+  <defs>
+    <marker id="br-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+
+  <style>
+    .pBad { fill: #fdf2f6; stroke: #f0a9c8; stroke-width: 1.5; }
+    .pSafe{ fill: #eefcff; stroke: #a9e8f2; stroke-width: 1.5; }
+    .bad  { fill: #ffffff; stroke: #e7157b; stroke-width: 2; }
+    .safe { fill: #ffffff; stroke: #22d3ee; stroke-width: 2; }
+    .n    { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.25; }
+    .t  { font-size: 14px; font-weight: 700; fill: #101828; }
+    .l  { font-size: 12px; font-weight: 600; fill: #344054; }
+    .m  { font-size: 11px; font-weight: 500; fill: #667085; }
+    .a  { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#br-arrow); }
+  </style>
+
+  <!-- Top: shared, wide blast radius -->
+  <rect class="pBad" x="16" y="16" width="928" height="150" rx="12"/>
+  <text class="t" x="36" y="44">Shared bus — wide blast radius</text>
+
+  <rect class="bad" x="36" y="72" width="150" height="60" rx="8" stroke-dasharray="5 4"/>
+  <text class="m" x="52" y="98">bad filter /</text>
+  <text class="m" x="52" y="116">deleted share</text>
+  <path class="a" d="M 186 102 H 250"/>
+
+  <rect class="bad" x="250" y="72" width="150" height="60" rx="8"/>
+  <text class="l" x="272" y="106">enhanced bus</text>
+
+  <path class="a" d="M 400 90 H 640"/>
+  <path class="a" d="M 400 102 H 640"/>
+  <path class="a" d="M 400 114 H 640"/>
+  <rect class="n" x="640" y="70" width="180" height="24" rx="6"/>
+  <text class="l" x="656" y="87">Subscriber A</text>
+  <rect class="n" x="640" y="98" width="180" height="24" rx="6"/>
+  <text class="l" x="656" y="115">Subscriber B</text>
+  <rect class="n" x="640" y="126" width="180" height="24" rx="6"/>
+  <text class="l" x="656" y="143">Subscriber C</text>
+
+  <!-- Bottom: isolated critical slice -->
+  <rect class="pSafe" x="16" y="182" width="928" height="122" rx="12"/>
+  <text class="t" x="36" y="210">Critical slice — kept local</text>
+
+  <rect class="safe" x="36" y="238" width="170" height="46" rx="8"/>
+  <text class="l" x="58" y="266">classic bus</text>
+  <path class="a" d="M 206 261 H 300"/>
+  <rect class="n" x="300" y="238" width="240" height="46" rx="8"/>
+  <text class="l" x="322" y="266">owner-only consumer</text>
+  <text class="m" x="576" y="266">separate failure domain — no shared fate</text>
+</svg>

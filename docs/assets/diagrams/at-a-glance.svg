@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img"
+     aria-labelledby="aag-title aag-desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="aag-title">Enhanced shared bus versus classic multi-bus, at a glance</title>
+  <desc id="aag-desc">Top: one enhanced bus shared via RAM feeds a FIFO and an UNORDERED Subscriber. Bottom: classic buses chained with rules plus a bolt-on SQS FIFO per consumer.</desc>
+
+  <defs>
+    <marker id="aag-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+
+  <style>
+    .p  { fill: #f6f7f9; stroke: #d0d5dd; stroke-width: 1.5; }
+    .n  { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.25; }
+    .eb { fill: #ffffff; stroke: #22d3ee; stroke-width: 2; }
+    .cl { fill: #ffffff; stroke: #98a2b3; stroke-width: 1.75; }
+    .sqs{ fill: #ffffff; stroke: #e7157b; stroke-width: 1.75; }
+    .t  { font-size: 15px; font-weight: 700; fill: #101828; }
+    .l  { font-size: 12px; font-weight: 600; fill: #344054; }
+    .m  { font-size: 11px; font-weight: 500; fill: #667085; }
+    .a  { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#aag-arrow); }
+  </style>
+
+  <!-- Top: enhanced -->
+  <rect class="p" x="16" y="16" width="928" height="192" rx="12"/>
+  <text class="t" x="36" y="44">Enhanced shared bus</text>
+  <text class="m" x="200" y="44">one bus · AWS RAM · self-serve Subscribers</text>
+
+  <rect class="n" x="36" y="96" width="120" height="44" rx="8"/>
+  <text class="l" x="60" y="123">Publisher</text>
+  <path class="a" d="M 156 118 H 214"/>
+
+  <rect class="eb" x="214" y="86" width="180" height="64" rx="10"/>
+  <text class="l" x="238" y="114">Enhanced bus</text>
+  <text class="m" x="238" y="132">shared via RAM</text>
+
+  <path class="a" d="M 394 108 H 470"/>
+  <text class="m" x="410" y="100">RAM</text>
+  <path class="a" d="M 394 128 H 470"/>
+
+  <rect class="n" x="470" y="86" width="180" height="30" rx="8"/>
+  <text class="l" x="486" y="106">Subscriber · FIFO</text>
+  <rect class="n" x="470" y="122" width="180" height="30" rx="8"/>
+  <text class="l" x="486" y="142">Subscriber · UNORDERED</text>
+
+  <path class="a" d="M 650 101 H 720"/>
+  <path class="a" d="M 650 137 H 720"/>
+  <rect class="n" x="720" y="86" width="200" height="30" rx="8"/>
+  <text class="l" x="736" y="106">Consumer · dev</text>
+  <rect class="n" x="720" y="122" width="200" height="30" rx="8"/>
+  <text class="l" x="736" y="142">Consumer · analytics</text>
+
+  <!-- Bottom: classic -->
+  <rect class="p" x="16" y="232" width="928" height="192" rx="12"/>
+  <text class="t" x="36" y="260">Classic multi-bus</text>
+  <text class="m" x="180" y="260">bus-to-bus hops + a bolt-on queue per consumer</text>
+
+  <rect class="n" x="36" y="312" width="110" height="44" rx="8"/>
+  <text class="l" x="56" y="339">Publisher</text>
+  <path class="a" d="M 146 334 H 190"/>
+
+  <rect class="cl" x="190" y="314" width="80" height="40" rx="8"/>
+  <text class="m" x="214" y="338">bus A</text>
+  <path class="a" d="M 270 334 H 314"/>
+  <text class="m" x="276" y="326">rule</text>
+  <rect class="cl" x="314" y="314" width="80" height="40" rx="8"/>
+  <text class="m" x="338" y="338">bus B</text>
+
+  <path class="a" d="M 394 334 H 470"/>
+  <text class="m" x="400" y="326">rule</text>
+  <rect class="cl" x="470" y="292" width="80" height="34" rx="8"/>
+  <text class="m" x="494" y="313">bus C</text>
+  <rect class="sqs" x="470" y="336" width="110" height="34" rx="8"/>
+  <text class="m" x="486" y="357">SQS FIFO</text>
+
+  <path class="a" d="M 550 309 H 720"/>
+  <path class="a" d="M 580 353 H 720"/>
+  <rect class="n" x="720" y="292" width="200" height="34" rx="8"/>
+  <text class="l" x="736" y="313">Consumer C</text>
+  <rect class="n" x="720" y="336" width="200" height="34" rx="8"/>
+  <text class="l" x="736" y="357">Consumer B</text>
+</svg>

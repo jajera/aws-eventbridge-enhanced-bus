@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 220" width="620" height="220" role="img"
+     aria-labelledby="title desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="title">lab and dev CLI profiles map to two AWS accounts</title>
+  <desc id="desc">lab and dev must resolve to different account IDs. Values shown are placeholders.</desc>
+  <style>
+    .pf-panel { fill: #f6f7f9; stroke: #d0d5dd; stroke-width: 1.5; }
+    .pf-title { font-size: 15px; font-weight: 700; fill: #101828; }
+    .pf-head  { font-size: 11px; font-weight: 700; fill: #667085; letter-spacing: 0.03em; }
+    .pf-pill  { fill: #fff0f6; stroke: #e7157b; stroke-width: 1.5; }
+    .pf-prof  { font-size: 13px; font-weight: 700; fill: #c01060; font-family: IBM Plex Mono, ui-monospace, monospace; }
+    .pf-arrow { stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#pf-a); }
+    .pf-acct  { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.5; }
+    .pf-id    { font-size: 13px; font-weight: 700; fill: #101828; font-family: IBM Plex Mono, ui-monospace, monospace; }
+    .pf-owns  { font-size: 10.5px; font-weight: 500; fill: #667085; }
+    .pf-note  { font-size: 11.5px; font-weight: 600; fill: #344054; }
+  </style>
+  <defs>
+    <marker id="pf-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+
+  <rect class="pf-panel" x="8" y="8" width="604" height="204" rx="14"/>
+  <text class="pf-title" x="28" y="36">One profile, one distinct account</text>
+  <text class="pf-head" x="40" y="66">CLI profile</text>
+  <text class="pf-head" x="250" y="66">AWS account (ap-southeast-2)</text>
+
+  <rect class="pf-pill" x="40" y="84" width="150" height="38" rx="19"/>
+  <text class="pf-prof" x="115" y="108" text-anchor="middle">lab</text>
+  <path class="pf-arrow" d="M 196 103 H 244"/>
+  <rect class="pf-acct" x="250" y="84" width="330" height="38" rx="8"/>
+  <text class="pf-id" x="266" y="102">111122223333</text>
+  <text class="pf-owns" x="266" y="116">enhanced bus / bridge / RAM share</text>
+
+  <rect class="pf-pill" x="40" y="136" width="150" height="38" rx="19"/>
+  <text class="pf-prof" x="115" y="160" text-anchor="middle">dev</text>
+  <path class="pf-arrow" d="M 196 155 H 244"/>
+  <rect class="pf-acct" x="250" y="136" width="330" height="38" rx="8"/>
+  <text class="pf-id" x="266" y="154">444455556666</text>
+  <text class="pf-owns" x="266" y="168">Subscriber / eval / alerts table</text>
+
+  <text class="pf-note" x="40" y="198">Placeholder IDs -- confirm yours differ before deploy.</text>
+</svg>

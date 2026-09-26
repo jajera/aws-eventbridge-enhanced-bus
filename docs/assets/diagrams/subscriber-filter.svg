@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" width="960" height="220" role="img"
+     aria-labelledby="title desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="title">Subscriber DATA filter selects by source</title>
+  <desc id="desc">Only events with source iot.lab match the DATA filter and reach the FIFO Subscriber. Other sources are dropped.</desc>
+  <defs>
+    <marker id="sf-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#087443"/>
+    </marker>
+    <marker id="sf-no" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b42318"/>
+    </marker>
+  </defs>
+  <style>
+    .p { fill: #f6f7f9; stroke: #d0d5dd; stroke-width: 1.5; }
+    .bus { fill: #ffffff; stroke: #e7157b; stroke-width: 2; }
+    .box { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.5; }
+    .chip { fill: #ffffff; stroke: #d0d5dd; stroke-width: 1.25; }
+    .hit { fill: #ecfdf3; stroke: #087443; stroke-width: 1.5; }
+    .miss { fill: #fef3f2; stroke: #b42318; stroke-width: 1.25; stroke-dasharray: 4 3; }
+    .t { font-size: 14px; font-weight: 700; fill: #101828; }
+    .l { font-size: 12px; font-weight: 600; fill: #344054; }
+    .m { font-size: 11px; font-weight: 500; fill: #667085; }
+    .mono { font-size: 11px; font-weight: 600; fill: #c01060; font-family: IBM Plex Mono, ui-monospace, monospace; }
+    .ok { font-size: 11px; font-weight: 700; fill: #087443; }
+    .no { font-size: 11px; font-weight: 700; fill: #b42318; }
+    .aok { stroke: #087443; stroke-width: 1.75; fill: none; marker-end: url(#sf-ok); }
+    .ano { stroke: #b42318; stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; marker-end: url(#sf-no); }
+  </style>
+
+  <rect class="p" x="8" y="8" width="944" height="204" rx="14"/>
+  <text class="t" x="28" y="34">Subscriber filter -- DATA scope matches source only</text>
+
+  <rect class="bus" x="28" y="56" width="150" height="100" rx="10"/>
+  <text class="l" x="103" y="90" text-anchor="middle">Shared bus</text>
+  <text class="m" x="103" y="110" text-anchor="middle">many publishers</text>
+  <text class="m" x="103" y="128" text-anchor="middle">one ARN</text>
+
+  <rect class="chip hit" x="210" y="60" width="168" height="36" rx="8"/>
+  <text class="mono" x="294" y="83" text-anchor="middle">source=iot.lab</text>
+  <path class="aok" d="M 178 98 H 210"/>
+  <path class="aok" d="M 378 78 H 420"/>
+
+  <rect class="chip miss" x="210" y="116" width="168" height="36" rx="8"/>
+  <text class="m" x="294" y="139" text-anchor="middle">other source</text>
+  <path class="ano" d="M 178 130 H 210"/>
+  <path class="ano" d="M 378 134 H 420"/>
+  <text class="no" x="450" y="138">dropped</text>
+
+  <rect class="box" x="420" y="52" width="200" height="72" rx="10"/>
+  <text class="l" x="520" y="80" text-anchor="middle">Filter (dev owns)</text>
+  <text class="mono" x="520" y="100" text-anchor="middle">{"source":["iot.lab"]}</text>
+  <text class="m" x="520" y="116" text-anchor="middle">Scope = DATA</text>
+
+  <path class="aok" d="M 620 88 H 668"/>
+
+  <rect class="box" x="668" y="52" width="250" height="72" rx="10"/>
+  <text class="l" x="793" y="80" text-anchor="middle">FIFO Subscriber to target</text>
+  <text class="m" x="793" y="100" text-anchor="middle">health-fifo to health-eval</text>
+  <text class="ok" x="793" y="116" text-anchor="middle">matched events only</text>
+
+  <text class="m" x="28" y="190">Dev sets the filter on create-subscriber. Lab publishes; the pattern decides what arrives.</text>
+</svg>
