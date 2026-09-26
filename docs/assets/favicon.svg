@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Enhanced EventBridge custom event bus">
+  <rect x="0" y="0" width="32" height="32" rx="7" fill="#E7157B"/>
+  <!-- One shared bus (vertical rail) with ordered events fanning to a subscriber. -->
+  <g stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none">
+    <!-- the bus rail -->
+    <path d="M11 7 V25"/>
+    <!-- ordered events flowing out to the subscriber -->
+    <path d="M11 10 H21"/>
+    <path d="M11 16 H21"/>
+    <path d="M11 22 H21"/>
+  </g>
+  <!-- event markers on the bus (FIFO order) -->
+  <circle cx="11" cy="10" r="2.4" fill="#ffffff"/>
+  <circle cx="11" cy="16" r="2.4" fill="#ffffff"/>
+  <circle cx="11" cy="22" r="2.4" fill="#ffffff"/>
+  <!-- subscriber -->
+  <circle cx="22" cy="16" r="4.6" fill="#ffffff"/>
+  <circle cx="22" cy="16" r="2" fill="#E7157B"/>
+</svg>

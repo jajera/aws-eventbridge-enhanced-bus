@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"
+     role="img" aria-label="Enhanced EventBridge custom event bus"
+     font-family="Outfit, IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <defs>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c0a16"/>
+      <stop offset="0.55" stop-color="#120610"/>
+      <stop offset="1" stop-color="#0a0710"/>
+    </linearGradient>
+    <radialGradient id="og-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#E7157B" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#E7157B" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="og-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <circle cx="1000" cy="330" r="285" fill="url(#og-glow)"/>
+
+  <!-- Kicker -->
+  <text x="72" y="112" font-family="IBM Plex Mono, ui-monospace, monospace"
+        font-size="26" font-weight="600" letter-spacing="3" fill="#22d3ee">EVENTBRIDGE · ENHANCED CUSTOM BUS</text>
+
+  <!-- Title -->
+  <text x="70" y="200" font-size="66" font-weight="700" fill="#f4f6f8">Enhanced EventBridge</text>
+  <text x="70" y="280" font-size="66" font-weight="700" fill="#f4f6f8">custom event bus</text>
+
+  <!-- Tagline -->
+  <text x="72" y="352" font-size="29" font-weight="400" fill="#c3cbd2">One shared bus across accounts with AWS RAM,</text>
+  <text x="72" y="392" font-size="29" font-weight="400" fill="#c3cbd2">a FIFO Subscriber for per-entity order — no</text>
+  <text x="72" y="432" font-size="29" font-weight="400" fill="#c3cbd2">bus-to-bus routing, alerts land in DynamoDB.</text>
+
+  <!-- Tag pills -->
+  <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="22" font-weight="500">
+    <g>
+      <rect x="72" y="486" width="196" height="44" rx="22" fill="none" stroke="#E7157B" stroke-width="1.5"/>
+      <text x="170" y="515" fill="#f5a8d0" text-anchor="middle">enhanced bus</text>
+    </g>
+    <g>
+      <rect x="284" y="486" width="150" height="44" rx="22" fill="none" stroke="#E7157B" stroke-width="1.5"/>
+      <text x="359" y="515" fill="#f5a8d0" text-anchor="middle">AWS RAM</text>
+    </g>
+    <g>
+      <rect x="450" y="486" width="110" height="44" rx="22" fill="none" stroke="#E7157B" stroke-width="1.5"/>
+      <text x="505" y="515" fill="#f5a8d0" text-anchor="middle">FIFO</text>
+    </g>
+    <g>
+      <rect x="576" y="486" width="200" height="44" rx="22" fill="none" stroke="#E7157B" stroke-width="1.5"/>
+      <text x="676" y="515" fill="#f5a8d0" text-anchor="middle">EventGroupId</text>
+    </g>
+  </g>
+
+  <!-- URL -->
+  <text x="72" y="586" font-family="IBM Plex Mono, ui-monospace, monospace"
+        font-size="24" font-weight="500" fill="#7c8994">aws-eventbridge-enhanced-bus.johna.kiwi</text>
+
+  <!-- Right graphic: shared bus -> FIFO ordered events -> subscriber -> alert store (matches favicon) -->
+  <g transform="translate(858, 190)">
+    <circle cx="145" cy="140" r="170" fill="#1a0b15" stroke="#40202f" stroke-width="1.5"/>
+    <!-- the shared bus rail -->
+    <path d="M60 40 V240" stroke="#E7157B" stroke-width="6" stroke-linecap="round"/>
+    <!-- ordered events flowing to the subscriber -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M60 75 H 176" stroke="#E7157B" stroke-width="4"/>
+      <path d="M60 140 H 176" stroke="#E7157B" stroke-width="4"/>
+      <path d="M60 205 H 176" stroke="#E7157B" stroke-width="4"/>
+      <path d="M212 140 H 268" stroke="#22d3ee" stroke-width="4.5" marker-end="url(#og-arrow)"/>
+    </g>
+    <!-- event markers on the bus (FIFO order) -->
+    <g fill="#1a0b15" stroke="#E7157B" stroke-width="3.5">
+      <circle cx="60" cy="75" r="15"/>
+      <circle cx="60" cy="140" r="15"/>
+      <circle cx="60" cy="205" r="15"/>
+    </g>
+    <!-- subscriber -->
+    <circle cx="188" cy="140" r="30" fill="#E7157B"/>
+    <circle cx="188" cy="140" r="12" fill="#1a0b15"/>
+    <!-- alert store box -->
+    <rect x="272" y="116" width="46" height="48" rx="7" fill="#1a0b15" stroke="#22d3ee" stroke-width="3.5"/>
+    <!-- labels -->
+    <text x="60" y="22" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="17" fill="#a08b98" text-anchor="middle">bus</text>
+    <text x="188" y="196" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="17" fill="#f5a8d0" text-anchor="middle">FIFO</text>
+    <text x="295" y="185" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="17" fill="#5fd8e6" text-anchor="middle">alerts</text>
+  </g>
+</svg>

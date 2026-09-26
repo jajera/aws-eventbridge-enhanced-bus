@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img"
+     aria-labelledby="uf-title uf-desc"
+     font-family="IBM Plex Sans, Helvetica Neue, Arial, sans-serif">
+  <title id="uf-title">UNORDERED versus FIFO delivery of OPEN then CLEAR</title>
+  <desc id="uf-desc">The bus publishes OPEN then CLEAR for one device. An UNORDERED Subscriber may deliver CLEAR before OPEN, leaving a stuck alert. A FIFO Subscriber keyed by EventGroupId delivers OPEN then CLEAR, so the alert clears correctly.</desc>
+
+  <defs>
+    <marker id="uf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"/>
+    </marker>
+  </defs>
+
+  <style>
+    .lane { stroke: #d0d5dd; stroke-width: 1.5; stroke-dasharray: 3 4; }
+    .head { fill: #ffffff; stroke: #98a2b3; stroke-width: 1.75; }
+    .headBad { fill: #ffffff; stroke: #e7157b; stroke-width: 1.75; }
+    .headGood{ fill: #ffffff; stroke: #22d3ee; stroke-width: 1.75; }
+    .t  { font-size: 12px; font-weight: 700; fill: #101828; }
+    .m  { font-size: 11px; font-weight: 500; fill: #667085; }
+    .msg{ stroke: #475467; stroke-width: 1.75; fill: none; marker-end: url(#uf-arrow); }
+    .ev { font-size: 11px; font-weight: 700; fill: #344054; }
+    .bad { font-size: 11.5px; font-weight: 700; fill: #b42318; }
+    .good{ font-size: 11.5px; font-weight: 700; fill: #087443; }
+    .sec { font-size: 12px; font-weight: 700; fill: #101828; }
+  </style>
+
+  <!-- lifelines -->
+  <rect class="head" x="80" y="60" width="130" height="34" rx="8"/>
+  <text class="t" x="100" y="82">enhanced bus</text>
+  <line class="lane" x1="145" y1="94" x2="145" y2="330"/>
+
+  <rect class="headBad" x="380" y="60" width="180" height="34" rx="8"/>
+  <text class="t" x="398" y="82">UNORDERED Subscriber</text>
+  <line class="lane" x1="470" y1="94" x2="470" y2="330"/>
+
+  <rect class="headGood" x="700" y="60" width="200" height="34" rx="8"/>
+  <text class="t" x="716" y="82">FIFO Subscriber</text>
+  <text class="m" x="716" y="118">EventGroupId = device-42</text>
+  <line class="lane" x1="800" y1="120" x2="800" y2="330"/>
+
+  <text class="sec" x="30" y="30">publish OPEN, then CLEAR</text>
+
+  <!-- UNORDERED lane: CLEAR then OPEN (wrong) -->
+  <text class="m" x="240" y="150">best-effort</text>
+  <path class="msg" d="M 145 168 H 470" stroke-dasharray="6 4"/>
+  <text class="ev" x="270" y="162">CLEAR</text>
+  <path class="msg" d="M 145 200 H 470" stroke-dasharray="6 4"/>
+  <text class="ev" x="272" y="194">OPEN</text>
+  <text class="bad" x="360" y="230">✗ alert re-opens — wrong final state</text>
+
+  <!-- FIFO lane: OPEN then CLEAR (correct) -->
+  <text class="m" x="560" y="150">ordered per group</text>
+  <path class="msg" d="M 145 262 H 800"/>
+  <text class="ev" x="440" y="256">OPEN</text>
+  <path class="msg" d="M 145 294 H 800"/>
+  <text class="ev" x="438" y="288">CLEAR</text>
+  <text class="good" x="600" y="324">✓ OPEN then CLEAR — alert clears correctly</text>
+</svg>
