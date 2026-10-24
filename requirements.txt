@@ -1,2 +1,2 @@
-zensical>=0.0.70
+zensical>=0.0.71
 zensical-patina>=0.1.0
